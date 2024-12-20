@@ -18,29 +18,36 @@ if uploaded_file is not None:
 
 # fetch unique users
     user_list = df['user'].unique().tolist()
-    user_list.remove('group_notification')
+     if 'group_notification' in user_list:
+        user_list.remove('group_notification')
+         
+    
+     total_members = len(user_list)
     user_list.sort()
     user_list.insert(0,"Overall")
 
-    selected_user = st.sidebar.selectbox("Show analysis wrt",user_list)
+    selected_user = st.sidebar.selectbox("Show analysis",user_list)
 
     if st.sidebar.button("Show Analysis"):
         # Stats Area
         num_messages, words, num_media_messages, num_links = helper.fetch_stats(selected_user, df)
         st.title("Top Statistics")
-        col1, col2, col3, col4 = st.columns(4)
-
+        col1,col2, col3, col4, col5 = st.columns(5)
+        
         with col1:
-            st.header("Total Messages")
-            st.title(num_messages)
+            st.header("Active Mems")
+            st.title(total_members)
         with col2:
-            st.header("Total Words")
-            st.title(words)
+            st.header("Total Msgs")
+            st.title(num_messages)
         with col3:
-            st.header("Media Shared")
-            st.title(num_media_messages)
+            st.header("Total Wrds")
+            st.title(words)
         with col4:
-            st.header("Links Shared")
+            st.header("Media Shrd")
+            st.title(num_media_messages)
+        with col5:
+            st.header("Links Shrd")
             st.title(num_links)
 
         # monthly timeline
