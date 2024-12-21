@@ -18,8 +18,9 @@ if uploaded_file is not None:
 
 # fetch unique users
     user_list = df['user'].unique().tolist()
-     if 'group_notification' in user_list:
+    if 'group_notification' in user_list:
         user_list.remove('group_notification')
+        
          
     
      total_members = len(user_list)
