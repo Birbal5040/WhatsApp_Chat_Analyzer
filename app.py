@@ -23,7 +23,7 @@ if uploaded_file is not None:
         
          
     
-     total_members = len(user_list)
+    total_members = len(user_list)
     user_list.sort()
     user_list.insert(0,"Overall")
 
