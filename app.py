@@ -20,12 +20,14 @@ if uploaded_file is not None:
     user_list = df['user'].unique().tolist()
     if 'group_notification' in user_list:
         user_list.remove('group_notification')
-        
-         
-    
+
+
+
+
     total_members = len(user_list)
     user_list.sort()
     user_list.insert(0,"Overall")
+
 
     selected_user = st.sidebar.selectbox("Show analysis",user_list)
 
@@ -34,10 +36,11 @@ if uploaded_file is not None:
         num_messages, words, num_media_messages, num_links = helper.fetch_stats(selected_user, df)
         st.title("Top Statistics")
         col1,col2, col3, col4, col5 = st.columns(5)
-        
+
         with col1:
             st.header("Active Mems")
             st.title(total_members)
+
         with col2:
             st.header("Total Msgs")
             st.title(num_messages)
