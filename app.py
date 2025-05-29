@@ -1,6 +1,6 @@
 import streamlit as st
 import preprocessor
-#import helper
+import helper
 import matplotlib.pyplot as plt
 import seaborn as sns
 
@@ -142,5 +142,3 @@ if uploaded_file is not None:
             fig, ax = plt.subplots()
             ax.pie(emoji_df[1].head(), labels=emoji_df[1].head(), autopct="%0.2f")
             st.pyplot(fig)
-
-
